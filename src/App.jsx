@@ -504,7 +504,7 @@ function App() {
               <a className="contact-email" href="mailto:shreyapawar451@gmail.com">Say hello <span>↗</span></a>
               <p>Or leave a quick note—I’ll get back to you soon.</p>
             </div>
-            <form className="contact-form" action="https://formsubmit.co/shreyapawar451@gmail.com" method="POST">
+            <form className="contact-form" action="https://formsubmit.co/b3fb6ab854147d06cb643c232db452a0" method="POST">
               <input type="hidden" name="_subject" value="New portfolio enquiry" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
