@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#fffaf2"/>
+  <pattern id="grain" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".8" fill="#191a20" opacity=".10"/></pattern><rect width="1200" height="630" fill="url(#grain)"/>
+  <circle cx="1010" cy="140" r="155" fill="#ff765f"/><circle cx="875" cy="492" r="116" fill="#9fc8ff"/><circle cx="1037" cy="429" r="48" fill="#c8f15b"/>
+  <rect x="813" y="155" width="246" height="337" rx="4" fill="#191a20" transform="rotate(4 936 324)"/><rect x="825" y="167" width="222" height="250" fill="#f3b7a7" transform="rotate(4 936 324)"/>
+  <path d="M853 370c46-72 121-84 172-24v72H853z" fill="#ff765f" transform="rotate(4 936 324)"/><circle cx="938" cy="272" r="62" fill="#8d513e" transform="rotate(4 936 324)"/><path d="M877 273c7-62 98-85 119-8-35-27-76-24-119 8z" fill="#191a20" transform="rotate(4 936 324)"/>
+  <text x="82" y="97" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2" fill="#ff765f">SOFTWARE DEVELOPMENT ENGINEER</text>
+  <text x="80" y="226" font-family="Arial, sans-serif" font-size="86" font-weight="700" letter-spacing="-5" fill="#191a20">Shreya Pawar</text>
+  <text x="80" y="305" font-family="Georgia, serif" font-size="66" font-style="italic" font-weight="700" fill="#ff765f">Builds systems</text><text x="80" y="370" font-family="Georgia, serif" font-size="66" font-style="italic" font-weight="700" fill="#ff765f">that make things work.</text>
+  <line x1="82" y1="466" x2="642" y2="466" stroke="#191a20" stroke-width="2"/><text x="82" y="515" font-family="Arial, sans-serif" font-size="23" fill="#393a40">Java · Spring Boot · Distributed systems · Product engineering</text>
+  <rect x="82" y="548" width="220" height="45" rx="22" fill="#191a20"/><text x="192" y="578" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#fffaf2">shreya-pawar-virid.vercel.app</text>
+</svg>
