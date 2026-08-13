@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import "./overrides.css";
 import "./layout.css";
+import "./contact-form.css";
 
 const projects = [
   {
@@ -498,9 +499,22 @@ function App() {
             <br />
             worth solving?
           </h2>
-          <a href="mailto:shreyapawar451@gmail.com">
-            Say hello <span>↗</span>
-          </a>
+          <div className="contact-layout">
+            <div className="contact-copy">
+              <a className="contact-email" href="mailto:shreyapawar451@gmail.com">Say hello <span>↗</span></a>
+              <p>Or leave a quick note—I’ll get back to you soon.</p>
+            </div>
+            <form className="contact-form" action="https://formsubmit.co/shreyapawar451@gmail.com" method="POST">
+              <input type="hidden" name="_subject" value="New portfolio enquiry" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="text" name="_honey" className="sr-only" tabIndex="-1" autoComplete="off" aria-hidden="true" />
+              <label>Name<input name="name" type="text" placeholder="Your name" required /></label>
+              <label>Email<input name="email" type="email" placeholder="you@company.com" required /></label>
+              <label className="message-field">Message<textarea name="message" rows="4" placeholder="Tell me a little about the opportunity…" required /></label>
+              <button type="submit">Send message <span>↗</span></button>
+            </form>
+          </div>
           <div>
             <span>shreyapawar451@gmail.com</span>
             <a
