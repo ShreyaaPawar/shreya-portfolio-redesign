@@ -388,7 +388,7 @@ function App() {
             </p>
             <span className="cert-wrap">
               <a className="cert-badge" href="/oracle-java-se8-certificate.jpg" target="_blank" rel="noreferrer" aria-label="Open Oracle Java SE 8 certificate">
-                <img src="/oracle-java-se8-certificate.jpg" alt="Oracle Certified Professional badge" />
+                <img src="/oracle-certified-professional-badge.png" alt="Oracle Certified Professional badge" />
                 <p>
                   <b>Oracle Certified Professional</b>
                   <br />
