@@ -1,6 +1,10 @@
 html, body { overflow-x: clip; }
 main { padding-top: 78px; }
 
+.ticker .ticker-track { display: flex; width: max-content; animation: ticker-scroll 55s linear infinite; }
+.ticker .ticker-track span { display: block; white-space: nowrap; }
+@keyframes ticker-scroll { to { transform: translateX(-50%); } }
+
 .tech-icon { display: inline-flex; align-items: center; gap: 5px; font: 500 10px 'DM Mono'; white-space: nowrap; }
 .tech-icon img { width: 27px; height: 27px; object-fit: contain; }
 

@@ -146,11 +146,10 @@ function App() {
             </div>
           </div>
         </section>
-        <div className="ticker">
-          <div>
-            JAVA + SPRING BOOT <i>✦</i> API DESIGN <i>✦</i> DISTRIBUTED SYSTEMS{" "}
-            <i>✦</i> PRODUCT THINKING <i>✦</i> JAVA + SPRING BOOT <i>✦</i> API
-            DESIGN <i>✦</i>
+        <div className="ticker" aria-label="Technology highlights">
+          <div className="ticker-track">
+            <span>JAVA + SPRING BOOT <i>✦</i> MICROSERVICES <i>✦</i> REST API DESIGN <i>✦</i> KAFKA + RABBITMQ <i>✦</i> SQL + POSTGRESQL <i>✦</i> AWS + DOCKER <i>✦</i> KUBERNETES <i>✦</i> JENKINS + CI/CD <i>✦</i> REACT + JAVASCRIPT <i>✦</i> JUNIT + MOCKITO <i>✦</i></span>
+            <span aria-hidden="true">JAVA + SPRING BOOT <i>✦</i> MICROSERVICES <i>✦</i> REST API DESIGN <i>✦</i> KAFKA + RABBITMQ <i>✦</i> SQL + POSTGRESQL <i>✦</i> AWS + DOCKER <i>✦</i> KUBERNETES <i>✦</i> JENKINS + CI/CD <i>✦</i> REACT + JAVASCRIPT <i>✦</i> JUNIT + MOCKITO <i>✦</i></span>
           </div>
         </div>
         <section className="section about" id="about">
@@ -194,9 +193,7 @@ function App() {
                 <span>Oracle Financial Services · Mumbai</span>
               </div>
               <h3>
-                Staff Consultant
-                <br />
-                <em>Software Development Engineer</em>
+                Software Development Engineer
               </h3>
               <p className="role-summary">
                 I build and evolve Java services for enterprise banking
@@ -268,9 +265,7 @@ function App() {
                 <span>Oracle Financial Services · Mumbai</span>
               </div>
               <h3>
-                Associate Consultant
-                <br />
-                <em>Software Engineer</em>
+                Software Development Engineer
               </h3>
               <p className="role-summary">
                 Worked across UI and backend services for enterprise financial
