@@ -85,6 +85,7 @@ function App() {
           <a href="#about">About</a>
           <a href="#experience">Experience</a>
           <a href="#work">Work</a>
+          <a href="#toolkit">Toolkit</a>
           <a href="#contact" className="nav-contact">
             Let’s talk <span>↗</span>
           </a>
@@ -374,7 +375,7 @@ function App() {
             ))}
           </div>
         </section>
-        <section className="section proof">
+        <section className="section proof" id="toolkit">
           <div className="proof-intro">
             <p>04 · TOOLKIT</p>
             <h2>
