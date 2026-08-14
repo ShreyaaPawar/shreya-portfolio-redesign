@@ -1,10 +1,12 @@
-html, body { overflow-x: clip; }
+html, body, #root { width: 100%; max-width: 100%; overflow-x: hidden; }
 html { scrollbar-width: thin; scrollbar-color: var(--ink) #f1eadf; }
 ::-webkit-scrollbar { width: 11px; }
 ::-webkit-scrollbar-track { background: #f1eadf; }
 ::-webkit-scrollbar-thumb { background: var(--ink); border: 3px solid #f1eadf; border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--coral); }
 main { padding-top: 78px; }
+.site-shell { width: 100%; max-width: 100%; }
+.site-header { width: 100%; box-sizing: border-box; }
 
 .ticker .ticker-track { display: flex; width: max-content; animation: ticker-scroll 55s linear infinite; }
 .ticker .ticker-track span { display: block; white-space: nowrap; }
@@ -17,4 +19,4 @@ main { padding-top: 78px; }
 
 /* Devicon provides a reliable AWS mark where the Simple Icons mark is blank. */
 
-@media (max-width: 800px) { main { padding-top: 66px; } }
+@media (max-width: 800px) { main { padding-top: 66px; }.hero { width: 100%; }.hero-art { max-width: 100%; }.ticker { max-width: 100%; } }
