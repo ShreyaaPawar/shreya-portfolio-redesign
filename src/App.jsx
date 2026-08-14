@@ -397,6 +397,17 @@ function App() {
               </a>
               <span className="cert-preview" aria-hidden="true"><img src="/oracle-java-se8-certificate.jpg" alt="" /></span>
             </span>
+            <span className="cert-wrap cert-wrap--award">
+              <a className="cert-badge cert-badge--award" href="/fsgiu-pacesetter-spark-award.png" target="_blank" rel="noreferrer" aria-label="Open FSGIU Pacesetter Spark Award">
+                <img src="/fsgiu-pacesetter-spark-award.png" alt="FSGIU Pacesetter Spark Award gold star" />
+                <p>
+                  <b>FSGIU Pacesetter Spark Award</b>
+                  <br />
+                  Oracle Financial Services <em>↗</em>
+                </p>
+              </a>
+              <span className="cert-preview" aria-hidden="true"><img src="/fsgiu-pacesetter-spark-award.png" alt="" /></span>
+            </span>
           </div>
           <div className="toolkit-wall">
             <article className="toolkit-card toolkit-card--java">
