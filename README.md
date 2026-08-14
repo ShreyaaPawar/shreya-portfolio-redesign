@@ -4,7 +4,7 @@ This is my personal portfolio website built using React. It showcases my project
 
 ## 🔗 Live Demo
 
-https://shreya-pawar-portfolio.vercel.app/
+https://shreya-pawar.vercel.app/
 
 ## 🛠️ Tech Stack
 
