@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import "./overrides.css";
 import "./layout.css";
@@ -54,6 +54,20 @@ const projects = [
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const body = document.body;
+    const previousRootOverflow = root.style.overflowX;
+    const previousBodyOverflow = body.style.overflowX;
+    root.style.overflowX = "hidden";
+    body.style.overflowX = "hidden";
+    window.scrollTo({ left: 0 });
+    return () => {
+      root.style.overflowX = previousRootOverflow;
+      body.style.overflowX = previousBodyOverflow;
+    };
+  }, []);
   return (
     <div className="site-shell">
       <header className="site-header">

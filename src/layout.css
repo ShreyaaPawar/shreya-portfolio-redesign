@@ -1,11 +1,11 @@
-html, body, #root { width: 100%; max-width: 100%; overflow-x: clip !important; }
+html, body, #root { width: 100%; max-width: 100%; overflow-x: hidden !important; }
 html { scrollbar-width: thin; scrollbar-color: var(--ink) #f1eadf; }
 ::-webkit-scrollbar { width: 11px; }
 ::-webkit-scrollbar-track { background: #f1eadf; }
 ::-webkit-scrollbar-thumb { background: var(--ink); border: 3px solid #f1eadf; border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--coral); }
 main { padding-top: 0; }
-.site-shell { width: 100%; max-width: 100%; overflow-x: clip !important; }
+.site-shell { width: 100%; max-width: 100%; overflow-x: hidden !important; }
 .site-header { width: 100%; box-sizing: border-box; }
 
 @media (max-width: 800px) {
