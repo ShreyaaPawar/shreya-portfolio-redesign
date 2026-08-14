@@ -386,14 +386,17 @@ function App() {
               From clean service contracts to reliable delivery pipelines—the
               stack behind the work.
             </p>
-            <div className="cert-badge">
-              <span>✓</span>
-              <p>
-                <b>Oracle Certified Professional</b>
-                <br />
-                Java SE 8
-              </p>
-            </div>
+            <span className="cert-wrap">
+              <a className="cert-badge" href="/oracle-java-se8-certificate.jpg" target="_blank" rel="noreferrer" aria-label="Open Oracle Java SE 8 certificate">
+                <img src="/oracle-java-se8-certificate.jpg" alt="Oracle Certified Professional badge" />
+                <p>
+                  <b>Oracle Certified Professional</b>
+                  <br />
+                  Java SE 8 <em>↗</em>
+                </p>
+              </a>
+              <span className="cert-preview" aria-hidden="true"><img src="/oracle-java-se8-certificate.jpg" alt="" /></span>
+            </span>
           </div>
           <div className="toolkit-wall">
             <article className="toolkit-card toolkit-card--java">
