@@ -4,14 +4,13 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) #f1eadf; }
 ::-webkit-scrollbar-track { background: #f1eadf; }
 ::-webkit-scrollbar-thumb { background: var(--ink); border: 3px solid #f1eadf; border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--coral); }
-main { padding-top: 78px; }
+main { padding-top: 0; }
 .site-shell { width: 100%; max-width: 100%; }
 .site-header { width: 100%; box-sizing: border-box; }
 
 @media (max-width: 800px) {
-  html, body, #root, .site-shell { width: 100dvw !important; min-width: 100dvw; max-width: 100dvw; margin: 0; }
-  main { width: 100dvw !important; min-width: 100dvw; max-width: 100dvw; }
-  .ticker, .about, .work, .contact { width: 100dvw !important; min-width: 100dvw; max-width: 100dvw; }
+  html, body, #root, .site-shell, main { width: 100%; min-width: 0; max-width: 100%; margin: 0; }
+  .ticker, .about, .work, .contact { width: 100%; min-width: 0; max-width: 100%; }
   .hero-art { justify-self: center; }
 }
 
@@ -26,4 +25,4 @@ main { padding-top: 78px; }
 
 /* Devicon provides a reliable AWS mark where the Simple Icons mark is blank. */
 
-@media (max-width: 800px) { main { padding-top: 66px; }.hero { width: 100%; }.hero-art { max-width: 100%; }.ticker { max-width: 100%; } }
+@media (max-width: 800px) { main { padding-top: 0; }.hero { width: 100%; }.hero-art { max-width: 100%; }.ticker { max-width: 100%; } }
