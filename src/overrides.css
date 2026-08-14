@@ -6,7 +6,7 @@
   backdrop-filter: blur(12px);
 }
 
-.site-shell { overflow: visible; }
+.site-shell { overflow-x: clip; overflow-y: visible; }
 
 .role-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 24px; }
 .role-detail > div { border-top: 1px solid var(--line); padding-top: 14px; }
