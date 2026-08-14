@@ -399,7 +399,7 @@ function App() {
             </span>
             <span className="cert-wrap cert-wrap--award">
               <a className="cert-badge cert-badge--award" href="/fsgiu-pacesetter-spark-award.png" target="_blank" rel="noreferrer" aria-label="Open FSGIU Pacesetter Spark Award">
-                <img src="/fsgiu-pacesetter-spark-award.png" alt="FSGIU Pacesetter Spark Award gold star" />
+                <img src="/fsgiu-pacesetter-spark-badge.png" alt="FSGIU Pacesetter Spark Award gold star" />
                 <p>
                   <b>FSGIU Pacesetter Spark Award</b>
                   <br />
