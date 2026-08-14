@@ -14,7 +14,8 @@ main { padding-top: 0; }
   .hero-art { justify-self: center; }
 }
 
-.ticker .ticker-track { display: flex; width: max-content; animation: ticker-scroll 55s linear infinite; }
+.ticker { position: relative; height: 47px; overflow: clip !important; contain: paint; }
+.ticker .ticker-track { position: absolute; left: 0; top: 0; height: 47px; display: flex; align-items: center; width: max-content; animation: ticker-scroll 55s linear infinite; }
 .ticker .ticker-track span { display: block; white-space: nowrap; }
 @keyframes ticker-scroll { to { transform: translateX(-50%); } }
 
