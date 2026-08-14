@@ -1,4 +1,9 @@
 html, body { overflow-x: clip; }
+html { scrollbar-width: thin; scrollbar-color: var(--ink) #f1eadf; }
+::-webkit-scrollbar { width: 11px; }
+::-webkit-scrollbar-track { background: #f1eadf; }
+::-webkit-scrollbar-thumb { background: var(--ink); border: 3px solid #f1eadf; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--coral); }
 main { padding-top: 78px; }
 
 .ticker .ticker-track { display: flex; width: max-content; animation: ticker-scroll 55s linear infinite; }

@@ -38,7 +38,7 @@ const projects = [
   {
     name: "NewsMonkey",
     type: "API EXPERIENCE",
-    image: null,
+    image: "/newsmonkey-preview.png",
     description:
       "A responsive news reader that makes a continuously-updating API feel fast, focused, and easy to browse.",
     details: [
@@ -193,7 +193,9 @@ function App() {
                 <span>Oracle Financial Services · Mumbai</span>
               </div>
               <h3>
-                Software Development Engineer
+                Staff Consultant
+                <br />
+                <em>Software Development Engineer</em>
               </h3>
               <p className="role-summary">
                 I build and evolve Java services for enterprise banking
@@ -265,7 +267,9 @@ function App() {
                 <span>Oracle Financial Services · Mumbai</span>
               </div>
               <h3>
-                Software Development Engineer
+                Associate Consultant
+                <br />
+                <em>Software Development Engineer</em>
               </h3>
               <p className="role-summary">
                 Worked across UI and backend services for enterprise financial
