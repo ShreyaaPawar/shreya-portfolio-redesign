@@ -1,29 +1,151 @@
-html, body, #root { width: 100%; max-width: 100%; overflow-x: hidden !important; }
-html { scrollbar-width: thin; scrollbar-color: var(--ink) #f1eadf; }
+html {
+  scroll-padding-top: 98px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink) #f1eadf;
+}
+
+html, body, #root, .site-shell { width: 100%; }
+.site-shell { overflow: visible; }
+main { padding-top: 78px; }
+.site-header { width: 100%; box-sizing: border-box; }
+.hero > *, .about > *, .experience > *, .proof > *,
+.project-grid > *, .toolkit-wall > *, .education-strip > * { min-width: 0; }
+.hero h1 { font-size: clamp(52px, 5.2vw, 74px); }
+.hero-art { height: 500px; }
+.float-card--transactions { top: 440px; bottom: auto; }
+img { max-width: 100%; }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+a, button { -webkit-tap-highlight-color: transparent; }
+:where(a, button, input, textarea):focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 2px var(--paper);
+}
+.ticker button:focus-visible { outline-color: var(--lime); }
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 12px;
+  padding: 12px 18px;
+  border: 2px solid var(--ink);
+  border-radius: 5px;
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 700;
+  transform: translateY(-180%);
+}
+.skip-link:focus { transform: translateY(0); }
+
 ::-webkit-scrollbar { width: 11px; }
 ::-webkit-scrollbar-track { background: #f1eadf; }
 ::-webkit-scrollbar-thumb { background: var(--ink); border: 3px solid #f1eadf; border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--coral); }
-main { padding-top: 78px; }
-.site-shell { width: 100%; max-width: 100%; overflow: visible !important; }
-.site-header { width: 100%; box-sizing: border-box; }
 
-@media (max-width: 800px) {
-  html, body, #root, .site-shell, main { width: 100%; min-width: 0; max-width: 100%; margin: 0; }
-  .ticker, .about, .work, .contact { width: 100%; min-width: 0; max-width: 100%; }
-  .hero-art { justify-self: center; }
+.ticker {
+  position: relative;
+  width: 100%;
+  height: 52px;
+  overflow: hidden;
+  contain: layout paint;
 }
-
-.ticker { position: relative; width: 100%; height: 47px; overflow: clip !important; contain: strict; }
-.ticker .ticker-track { position: absolute; left: 0; top: 0; height: 47px; display: flex; align-items: center; width: max-content; animation: ticker-scroll 55s linear infinite; }
+.ticker .ticker-track {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: ticker-scroll 55s linear infinite;
+}
 .ticker .ticker-track span { display: block; white-space: nowrap; }
+.ticker--paused .ticker-track { animation-play-state: paused; }
+.ticker-toggle {
+  position: absolute;
+  z-index: 1;
+  right: 10px;
+  top: 8px;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid #a5a59d;
+  border-radius: 5px;
+  background: var(--ink);
+  color: var(--paper);
+  font: 500 11px 'DM Mono', monospace;
+  letter-spacing: 0;
+  box-shadow: -12px 0 12px var(--ink);
+}
+.ticker-toggle:hover { border-color: var(--lime); color: var(--lime); }
+.ticker-toggle:focus-visible { outline-offset: 2px; }
 @keyframes ticker-scroll { to { transform: translateX(-50%); } }
 
-.wordmark span { background: var(--coral); color: var(--ink); }
-
+.wordmark span { flex-shrink: 0; background: var(--coral); color: var(--ink); }
+.eyebrow { line-height: 1.5; }
+.eyebrow i { flex-shrink: 0; }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; }
+.menu-toggle { min-width: 44px; min-height: 44px; border-radius: 5px; }
 .tech-icon { display: inline-flex; align-items: center; gap: 5px; font: 500 10px 'DM Mono'; white-space: nowrap; }
-.tech-icon img { width: 27px; height: 27px; object-fit: contain; }
+.tech-icon img { flex-shrink: 0; width: 27px; height: 27px; object-fit: contain; }
+.project-type { line-height: 1.5; }
+.contact-links { gap: 18px; flex-wrap: wrap; }
+.contact-links > a { min-width: 0; overflow-wrap: anywhere; }
 
-/* Devicon provides a reliable AWS mark where the Simple Icons mark is blank. */
+@media (max-width: 800px) {
+  html { scroll-padding-top: 86px; }
+  main { padding-top: 66px; }
+  .hero { width: 100%; }
+  .hero h1 { font-size: clamp(40px, 8vw, 54px); }
+  .hero-art { max-width: 100%; height: 475px; }
+  .nav { max-height: calc(100dvh - 66px); overflow-y: auto; gap: 8px; box-shadow: 0 12px 24px #17182012; }
+  .nav a { width: 100%; }
+  .nav-contact { justify-content: center; }
+  .portrait { width: min(255px, 82%); right: 24px; top: 38px; }
+  .shape--coral { width: 215px; height: 215px; max-width: 80%; right: 2px; top: 12px; }
+  .shape--blue { width: 110px; height: 110px; left: 5px; bottom: 14px; }
+  .shape--lime { width: 46px; height: 46px; left: 10px; top: 10px; }
+  .float-card--transactions { right: 4px; top: 405px; bottom: auto; }
+  .float-card--uptime { left: 4px; top: 98px; }
+  .contact-links { margin-top: 48px; }
+}
 
-@media (max-width: 800px) { main { padding-top: 66px; }.hero { width: 100%; }.hero-art { max-width: 100%; }.ticker { max-width: 100%; } }
+@media (max-width: 400px) {
+  .hero { padding-top: 40px; }
+  .hero-intro { font-size: 17px; }
+  .hero-actions { gap: 10px; }
+  .button { padding: 13px 15px; }
+  .hero-art { height: 460px; }
+  .portrait { height: 333px; }
+  .portrait img { height: 262px; }
+  .float-card { padding: 10px 11px; }
+  .float-card b { font-size: 16px; }
+  .role-detail { gap: 10px; }
+  .toolkit-heading h3 { font-size: 22px; }
+  .contact h2 { font-size: 44px; }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .button:hover, .project:hover, .toolkit-card:hover, .cert-badge:hover,
+  .contact-email:hover, .contact-form button:hover { transform: none; }
+  .project:hover, .toolkit-card:hover, .cert-badge:hover { box-shadow: none; }
+  .project:hover img { transform: none; }
+  .portrait:hover { transform: rotate(3deg); box-shadow: 10px 12px 0 #191a2020; }
+  .float-card--transactions:hover { transform: rotate(-3deg); }
+  .float-card--uptime:hover { transform: rotate(-7deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .ticker-toggle { display: none; }
+  .button:hover, .project:hover, .project:hover img, .toolkit-card:hover,
+  .cert-badge:hover, .contact-email:hover, .contact-form button:hover { transform: none; }
+  .portrait:hover { transform: rotate(3deg); }
+  .float-card--transactions:hover { transform: rotate(-3deg); }
+  .float-card--uptime:hover { transform: rotate(-7deg); }
+}

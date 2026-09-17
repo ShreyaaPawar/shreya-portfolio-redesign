@@ -8,5 +8,5 @@
   <text x="80" y="226" font-family="Arial, sans-serif" font-size="86" font-weight="700" letter-spacing="-5" fill="#191a20">Shreya Pawar</text>
   <text x="80" y="305" font-family="Georgia, serif" font-size="66" font-style="italic" font-weight="700" fill="#ff765f">Builds systems</text><text x="80" y="370" font-family="Georgia, serif" font-size="66" font-style="italic" font-weight="700" fill="#ff765f">that make things work.</text>
   <line x1="82" y1="466" x2="642" y2="466" stroke="#191a20" stroke-width="2"/><text x="82" y="515" font-family="Arial, sans-serif" font-size="23" fill="#393a40">Java · Spring Boot · Distributed systems · Product engineering</text>
-  <rect x="82" y="548" width="220" height="45" rx="22" fill="#191a20"/><text x="192" y="578" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#fffaf2">shreya-pawar-virid.vercel.app</text>
+  <rect x="82" y="548" width="280" height="45" rx="22" fill="#191a20"/><text x="222" y="578" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#fffaf2">shreya-pawar.vercel.app</text>
 </svg>

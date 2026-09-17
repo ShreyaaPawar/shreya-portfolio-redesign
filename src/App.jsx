@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import "./overrides.css";
 import "./layout.css";
@@ -54,34 +54,69 @@ const projects = [
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [tickerPaused, setTickerPaused] = useState(false);
+  const menuButtonRef = useRef(null);
+  const headerRef = useRef(null);
 
   useEffect(() => {
-    const root = document.documentElement;
-    const body = document.body;
-    const previousRootOverflow = root.style.overflowX;
-    const previousBodyOverflow = body.style.overflowX;
-    root.style.overflowX = "hidden";
-    body.style.overflowX = "hidden";
-    window.scrollTo({ left: 0 });
-    return () => {
-      root.style.overflowX = previousRootOverflow;
-      body.style.overflowX = previousBodyOverflow;
+    if (!menuOpen) return;
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
     };
-  }, []);
+    const onPointerDown = (event) => {
+      if (!headerRef.current?.contains(event.target)) setMenuOpen(false);
+    };
+    const desktop = window.matchMedia("(min-width: 801px)");
+    const onBreakpointChange = (event) => {
+      if (event.matches) setMenuOpen(false);
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onPointerDown);
+    desktop.addEventListener("change", onBreakpointChange);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDown);
+      desktop.removeEventListener("change", onBreakpointChange);
+    };
+  }, [menuOpen]);
+
   return (
     <div className="site-shell">
-      <header className="site-header">
-        <a className="wordmark" href="#top">
+      <a className="skip-link" href="#top">Skip to content</a>
+      <header
+        className="site-header"
+        ref={headerRef}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) setMenuOpen(false);
+        }}
+      >
+        <a className="wordmark" href="#top" onClick={() => setMenuOpen(false)} aria-label="Shreya Pawar — back to top">
           <span>SP</span> shreya pawar
         </a>
         <button
           className="menu-toggle"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          ref={menuButtonRef}
+          type="button"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
         >
           {menuOpen ? "×" : "Menu"}
         </button>
-        <nav className={menuOpen ? "nav nav--open" : "nav"}>
+        <nav
+          id="primary-navigation"
+          aria-label="Main navigation"
+          className={menuOpen ? "nav nav--open" : "nav"}
+          onClick={(event) => {
+            if (event.target.closest("a")) setMenuOpen(false);
+          }}
+        >
           <a href="#about">About</a>
           <a href="#experience">Experience</a>
           <a href="#work">Work</a>
@@ -91,7 +126,7 @@ function App() {
           </a>
         </nav>
       </header>
-      <main id="top">
+      <main id="top" tabIndex={-1}>
         <section className="hero">
           <div className="hero-copy">
             <p className="eyebrow">
@@ -138,7 +173,7 @@ function App() {
             <span className="shape shape--blue" />
             <span className="shape shape--lime" />
             <div className="portrait">
-              <img src="/profile.jpg" alt="Shreya Pawar" />
+              <img src="/profile.jpg" alt="Shreya Pawar" width="834" height="895" fetchPriority="high" />
               <div className="portrait-note">
                 <span>Currently</span>
                 <strong>
@@ -161,11 +196,21 @@ function App() {
             </div>
           </div>
         </section>
-        <div className="ticker" aria-label="Technology highlights">
-          <div className="ticker-track">
+        <div className={`ticker${tickerPaused ? " ticker--paused" : ""}`} role="region" aria-label="Technology highlights">
+          <div className="ticker-track" id="technology-highlights">
             <span>JAVA + SPRING BOOT <i>✦</i> MICROSERVICES <i>✦</i> REST API DESIGN <i>✦</i> KAFKA + RABBITMQ <i>✦</i> SQL + POSTGRESQL <i>✦</i> AWS + DOCKER <i>✦</i> KUBERNETES <i>✦</i> JENKINS + CI/CD <i>✦</i> REACT + JAVASCRIPT <i>✦</i> JUNIT + MOCKITO <i>✦</i></span>
             <span aria-hidden="true">JAVA + SPRING BOOT <i>✦</i> MICROSERVICES <i>✦</i> REST API DESIGN <i>✦</i> KAFKA + RABBITMQ <i>✦</i> SQL + POSTGRESQL <i>✦</i> AWS + DOCKER <i>✦</i> KUBERNETES <i>✦</i> JENKINS + CI/CD <i>✦</i> REACT + JAVASCRIPT <i>✦</i> JUNIT + MOCKITO <i>✦</i></span>
           </div>
+          <button
+            className="ticker-toggle"
+            type="button"
+            aria-controls="technology-highlights"
+            aria-pressed={tickerPaused}
+            aria-label={tickerPaused ? "Resume technology animation" : "Pause technology animation"}
+            onClick={() => setTickerPaused((paused) => !paused)}
+          >
+            {tickerPaused ? "Play" : "Pause"}
+          </button>
         </div>
         <section className="section about" id="about">
           <div className="section-heading">
@@ -334,6 +379,8 @@ function App() {
                     <img
                       src={project.image}
                       alt={`${project.name} interface`}
+                      loading="lazy"
+                      decoding="async"
                     />
                   ) : (
                     <div className="news-visual">
@@ -389,25 +436,25 @@ function App() {
             </p>
             <span className="cert-wrap">
               <a className="cert-badge" href="/oracle-java-se8-certificate.jpg" target="_blank" rel="noreferrer" aria-label="Open Oracle Java SE 8 certificate">
-                <img src="/oracle-certified-professional-badge.png" alt="Oracle Certified Professional badge" />
+                <img src="/oracle-certified-professional-badge.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
                 <p>
                   <b>Oracle Certified Professional</b>
                   <br />
                   Java SE 8 <em>↗</em>
                 </p>
               </a>
-              <span className="cert-preview" aria-hidden="true"><img src="/oracle-java-se8-certificate.jpg" alt="" /></span>
+              <span className="cert-preview" aria-hidden="true"><img src="/oracle-java-se8-certificate.jpg" alt="" width="1287" height="994" loading="lazy" decoding="async" /></span>
             </span>
             <span className="cert-wrap cert-wrap--award">
               <a className="cert-badge cert-badge--award" href="/fsgiu-pacesetter-spark-award.png" target="_blank" rel="noreferrer" aria-label="Open FSGIU Pacesetter Spark Award">
-                <img src="/fsgiu-pacesetter-spark-badge.png" alt="FSGIU Pacesetter Spark Award gold star" />
+                <img src="/fsgiu-pacesetter-spark-badge.png" alt="" width="48" height="48" loading="lazy" decoding="async" />
                 <p>
                   <b>FSGIU Pacesetter Spark Award</b>
                   <br />
                   Oracle Financial Services <em>↗</em>
                 </p>
               </a>
-              <span className="cert-preview" aria-hidden="true"><img src="/fsgiu-pacesetter-spark-award.png" alt="" /></span>
+              <span className="cert-preview" aria-hidden="true"><img src="/fsgiu-pacesetter-spark-award.png" alt="" width="600" height="200" loading="lazy" decoding="async" /></span>
             </span>
           </div>
           <div className="toolkit-wall">
@@ -421,9 +468,9 @@ function App() {
                 </h3>
               </div>
               <div className="logo-row">
-                <span className="tech-icon"><img src="https://cdn.simpleicons.org/openjdk/191A20" alt="Java" />Java</span>
-                <span className="tech-icon"><img src="https://cdn.simpleicons.org/spring/191A20" alt="Spring" />Spring</span>
-                <span className="tech-icon"><img src="https://cdn.simpleicons.org/hibernate/191A20" alt="Hibernate" />Hibernate</span>
+                <span className="tech-icon"><img src="/icons/openjdk.svg" alt="" width="27" height="27" loading="lazy" />Java</span>
+                <span className="tech-icon"><img src="/icons/spring.svg" alt="" width="27" height="27" loading="lazy" />Spring</span>
+                <span className="tech-icon"><img src="/icons/hibernate.svg" alt="" width="27" height="27" loading="lazy" />Hibernate</span>
               </div>
               <p>
                 Java · Spring Boot · Spring Security · Hibernate · JPA · REST
@@ -439,10 +486,10 @@ function App() {
                 </h3>
               </div>
               <div className="logo-row">
-                <span className="tech-icon"><img src="https://cdn.simpleicons.org/postgresql/191A20" alt="PostgreSQL" />Postgres</span>
-                <span className="tech-icon"><img src="https://cdn.simpleicons.org/mysql/191A20" alt="MySQL" />MySQL</span>
-                <span className="tech-icon"><img src="https://cdn.simpleicons.org/apachekafka/191A20" alt="Apache Kafka" />Kafka</span>
-                <span className="tech-icon"><img src="https://cdn.simpleicons.org/rabbitmq/191A20" alt="RabbitMQ" />RabbitMQ</span>
+                <span className="tech-icon"><img src="/icons/postgresql.svg" alt="" width="27" height="27" loading="lazy" />Postgres</span>
+                <span className="tech-icon"><img src="/icons/mysql.svg" alt="" width="27" height="27" loading="lazy" />MySQL</span>
+                <span className="tech-icon"><img src="/icons/apachekafka.svg" alt="" width="27" height="27" loading="lazy" />Kafka</span>
+                <span className="tech-icon"><img src="/icons/rabbitmq.svg" alt="" width="27" height="27" loading="lazy" />RabbitMQ</span>
               </div>
               <p>
                 Oracle DB · PostgreSQL · MySQL · SQL · Apache Kafka · RabbitMQ
@@ -457,10 +504,10 @@ function App() {
                 </h3>
               </div>
               <div className="logo-row">
-                <span className="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" />AWS</span>
-                <span className="tech-icon"><img src="https://cdn.simpleicons.org/docker/191A20" alt="Docker" />Docker</span>
-                <span className="tech-icon"><img src="https://cdn.simpleicons.org/kubernetes/191A20" alt="Kubernetes" />Kubernetes</span>
-                <span className="tech-icon"><img src="https://cdn.simpleicons.org/jenkins/191A20" alt="Jenkins" />Jenkins</span>
+                <span className="tech-icon"><img src="/icons/aws.svg" alt="" width="27" height="27" loading="lazy" />AWS</span>
+                <span className="tech-icon"><img src="/icons/docker.svg" alt="" width="27" height="27" loading="lazy" />Docker</span>
+                <span className="tech-icon"><img src="/icons/kubernetes.svg" alt="" width="27" height="27" loading="lazy" />Kubernetes</span>
+                <span className="tech-icon"><img src="/icons/jenkins.svg" alt="" width="27" height="27" loading="lazy" />Jenkins</span>
               </div>
               <p>
                 AWS · Docker · Kubernetes · Jenkins · Maven · Git · CI/CD ·
@@ -476,9 +523,9 @@ function App() {
                 </h3>
               </div>
               <div className="logo-row">
-                <span className="tech-icon"><img src="https://cdn.simpleicons.org/react/191A20" alt="React" />React</span>
-                <span className="tech-icon"><img src="https://cdn.simpleicons.org/javascript/191A20" alt="JavaScript" />JavaScript</span>
-                <span className="tech-icon"><img src="https://cdn.simpleicons.org/bootstrap/191A20" alt="Bootstrap" />Bootstrap</span>
+                <span className="tech-icon"><img src="/icons/react.svg" alt="" width="27" height="27" loading="lazy" />React</span>
+                <span className="tech-icon"><img src="/icons/javascript.svg" alt="" width="27" height="27" loading="lazy" />JavaScript</span>
+                <span className="tech-icon"><img src="/icons/bootstrap.svg" alt="" width="27" height="27" loading="lazy" />Bootstrap</span>
               </div>
               <p>
                 React · JavaScript · HTML5 · CSS3 · Bootstrap · Responsive UI
@@ -492,10 +539,10 @@ function App() {
                   AI workflow
                 </h3>
               </div>
-              <div className="tool-symbols">
-                <span>✓</span>
-                <span>✦</span>
-                <span>↗</span>
+              <div className="tool-symbols" aria-hidden="true">
+                <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m5 12 4 4L19 6" /></svg></span>
+                <span><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z" /></svg></span>
+                <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 18 18 6M6 6h12v12" /></svg></span>
               </div>
               <p>
                 JUnit · Mockito · Postman · API testing · ChatGPT · OpenAI Codex
@@ -537,14 +584,14 @@ function App() {
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
               <input type="text" name="_honey" className="sr-only" tabIndex="-1" autoComplete="off" aria-hidden="true" />
-              <label>Name<input name="name" type="text" placeholder="Your name" required /></label>
-              <label>Email<input name="email" type="email" placeholder="you@company.com" required /></label>
+              <label>Name<input name="name" type="text" autoComplete="name" placeholder="Your name" required /></label>
+              <label>Email<input name="email" type="email" autoComplete="email" placeholder="you@company.com" required /></label>
               <label className="message-field">Message<textarea name="message" rows="4" placeholder="Tell me a little about the opportunity…" required /></label>
               <button type="submit">Send message <span>↗</span></button>
             </form>
           </div>
-          <div>
-            <span>shreyapawar451@gmail.com</span>
+          <div className="contact-links">
+            <a href="mailto:shreyapawar451@gmail.com">shreyapawar451@gmail.com</a>
             <a
               href="https://linkedin.com/in/shreya-pawar12"
               target="_blank"
