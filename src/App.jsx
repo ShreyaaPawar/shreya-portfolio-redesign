@@ -130,7 +130,7 @@ function App() {
         <section className="hero">
           <div className="hero-copy">
             <p className="eyebrow">
-              <i /> SOFTWARE DEVELOPMENT ENGINEER · MUMBAI, INDIA
+              <i /> SENIOR JAVA FULLSTACK DEVELOPER · MUMBAI, INDIA
             </p>
             <h1>
               Building the
@@ -140,7 +140,7 @@ function App() {
               <em>things work.</em>
             </h1>
             <p className="hero-intro">
-              I’m <strong>Shreya Pawar</strong>, a software development engineer
+              I’m <strong>Shreya Pawar</strong>, a senior Java fullstack developer
               building reliable, secure products—from high-volume financial
               systems to thoughtful user experiences.
             </p>
@@ -165,7 +165,7 @@ function App() {
               >
                 GitHub ↗
               </a>
-              <span>Open to SDE opportunities</span>
+              <span>Java · Spring Boot · React</span>
             </div>
           </div>
           <div className="hero-art">
@@ -177,8 +177,8 @@ function App() {
               <div className="portrait-note">
                 <span>Currently</span>
                 <strong>
-                  Staff Consultant
-                  <br />@ Oracle
+                  Senior Java Fullstack
+                  <br />@ TransUnion CIBIL
                 </strong>
               </div>
             </div>
@@ -227,10 +227,10 @@ function App() {
               data flows, and thoughtful decisions that make it feel effortless.
             </p>
             <p>
-              Over 4+ years at Oracle Financial Services, I’ve helped build
-              secure transaction flows used at scale—while always making time to
-              explore the tools and patterns that can make an engineer’s work
-              better.
+              Over 4+ years, first at Oracle Financial Services and now at
+              TransUnion CIBIL, I’ve helped build secure, high-volume financial
+              systems—while always making time to explore the tools and
+              patterns that can make an engineer’s work better.
             </p>
             <a href="#experience">
               My experience <span>↓</span>
@@ -249,7 +249,31 @@ function App() {
           <div className="experience-list">
             <article className="role role--featured">
               <div className="role-top">
-                <p>SEP 2024 — NOW</p>
+                <p>SEP 2026 — NOW</p>
+                <span>TransUnion CIBIL (via MITS Global Consulting) · Mumbai</span>
+              </div>
+              <h3>
+                Senior Java Fullstack Developer
+              </h3>
+              <p className="role-summary">
+                Joined TransUnion CIBIL as a Senior Java Fullstack Developer, working
+                across the Java, Spring Boot, and React stack on enterprise
+                financial products.
+              </p>
+              <div className="role-detail role-detail--compact">
+                <div>
+                  <ul>
+                    <li>
+                      Building backend services with Java and Spring Boot, and
+                      user interfaces with React.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+            <article className="role">
+              <div className="role-top">
+                <p>SEP 2024 — SEP 2026</p>
                 <span>Oracle Financial Services · Mumbai</span>
               </div>
               <h3>
